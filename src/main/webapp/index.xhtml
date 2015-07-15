@@ -1,0 +1,51 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core">
+ 
+    
+    <ui:decorate template="/padrao.xhtml">
+        <ui:define name="centro">
+          Bem vindo(a) <p:outputLabel value=" #{admBean.nome}" />  
+          
+    <h:form id="form_index">
+    <h3 style="margin-top: 0">Equipes</h3>
+    <p:ring id="basic" value="#{equipeBean.lista}" var="equipe"  >
+        <p:outputPanel style="text-align: center" layout="block">
+           
+            #{equipe.nomeEquipe}
+            <br/>
+            <p:column>
+            <p:button icon="ui-icon-plus" title="Inserir" href="cadastroEquipe.xhtml"/>
+            </p:column>
+            
+        </p:outputPanel>
+        
+    </p:ring>  
+    </h:form>  
+    
+    <h:form>
+    <h3 style="margin-top: 0">Alunos - Participantes</h3>
+    <p:ring id="basic2" value="#{alunoBean.lista}" var="aluno"  >
+        <p:outputPanel style="text-align: center" layout="block">
+           
+           #{aluno.nome}          
+            <p:column>
+            <p:button icon="ui-icon-plus" title="Inserir" href="cadastroAluno.xhtml" />
+            </p:column>       
+       
+        </p:outputPanel>
+        
+    </p:ring>
+    </h:form> 
+    
+    
+  
+          
+          
+                  
+        </ui:define>
+    </ui:decorate>
+
+    </html>

@@ -1,0 +1,47 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+	<ui:decorate template="/padrao.xhtml">
+	
+	<f:metadata>
+	<f:viewAction action="#{modalidadeBean.prepara}" />	
+	</f:metadata>
+	
+   <ui:define name="centro">
+   <h:form> 
+   
+   <p:messages errorStyle="color: red" infoStyle="color: green"
+			warnStyle="color: orange" fatalStyle="color: gray" />
+      
+   <p:dataTable value="#{equipeBean.lista}"
+				var="equipes" border="1" cellspacing="0" cellpadding="2"
+				paginator="true" rows="5" paginatorPosition="bottom" lazy="false">
+		
+		
+		<p:column headerText="Modalidade" >
+		<h:outputText value="#{equipes.codModalidade}" />			
+		</p:column>
+		
+		<p:column filterBy="#{equipes.codModalidade}" >		
+        <h:outputText value="#{equipes.nomeEquipe}"  />			
+		</p:column>
+		
+		
+
+		</p:dataTable>
+		</h:form>   
+		
+
+
+
+	</ui:define>
+    </ui:decorate>
+  	
+
+
+
+
+  </html>

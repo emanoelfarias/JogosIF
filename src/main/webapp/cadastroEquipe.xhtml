@@ -1,0 +1,66 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+	
+	<ui:decorate template="/padrao.xhtml">
+	
+			<f:metadata>
+			<f:viewParam name="codEquipe" value="#{equipeBean.equipe}" />			
+			</f:metadata>
+	
+    	<ui:define name="centro" >
+    		<div align="left">
+    		
+    		
+    		<p:outputLabel value="CADASTRO EQUIPE" />
+    		
+    		<h:form id="form_cadastro_equipe">
+    		
+    		<p:messages showDetail="false" autoUpdate="true" />        
+    		    		   		
+    		<p:panelGrid columns="2">     		
+        	<p:outputLabel value="Nome"/>
+			<p:inputText required="true" label="Nome" value="#{equipeBean.equipe.nomeEquipe}"/> 
+			<p:outputLabel value="N Participantes"/>
+			<p:inputText required="true" label="Participantes" value="#{equipeBean.equipe.numParticipante}"/>
+			<p:outputLabel value="Pontuação"/>
+			<p:inputText required="true" label="Pontuação" value="#{equipeBean.equipe.pontuacao}"/> 
+			
+					<p:outputLabel value="Curso:"/>
+					<h:selectOneListbox size="5" value="#{equipeBean.curso}">
+					<f:selectItems  var="cursos" value="#{cursoBean.lista}" itemLabel="#{cursos.nome}" 
+					itemValue="#{cursos}"/>
+					</h:selectOneListbox>
+			        	   	
+        			<p:outputLabel value="Modalidade:"/>
+					<h:selectOneListbox size="5" value="#{equipeBean.modalidade}">
+					<f:selectItems  var="modalidades" value="#{modalidadeBean.lista}" itemLabel="#{modalidades.tipo}"
+					itemValue="#{modalidades}"/>
+					</h:selectOneListbox>
+					
+        			<p:outputLabel value="Grupo:"/>
+					<h:selectOneListbox size="5" value="#{equipeBean.grupo}">
+					<f:selectItems  var="grupos" value="#{grupoBean.lista}" itemLabel="#{grupos.tipoGrupo}"
+					itemValue="#{grupos}"/>
+					</h:selectOneListbox>
+			
+			
+			
+			
+					
+        	<p:commandButton value="Salvar" action="#{equipeBean.guardar}" />
+        	</p:panelGrid>
+        	</h:form>
+        	
+        	</div>
+		</ui:define>
+    </ui:decorate>
+  	
+
+
+
+
+  </html>

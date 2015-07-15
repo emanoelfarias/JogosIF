@@ -1,0 +1,63 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+
+
+
+<ui:decorate template="/padrao.xhtml">
+	
+		<f:metadata>
+			<f:viewParam name="id" value="#{partidaBean.partidaparam}" />			
+		</f:metadata>
+
+
+    	<ui:define name="centro" >
+    		<div align="left">
+    		
+    		
+    		<p:outputLabel value="INFORME O RESULTADO DA PARTIDA"/>
+    		
+    		<h:form id="form_cadastro_res_partida">
+    		
+    		<p:messages showDetail="false" autoUpdate="true" />        
+    		    		   		
+    		<p:panelGrid columns="2">     		
+        				
+			
+			<p:outputLabel value="Equipe 1:"/>
+			<h:selectOneListbox size="5" value="#{partidaBean.equipe1}" required="true">
+			<f:selectItems  var="equipes1" value="#{equipeBean.lista}" itemLabel="#{equipes1.nomeEquipe}" 
+			itemValue="#{equipes1}"/>
+			</h:selectOneListbox>
+			
+			
+			<p:outputLabel value="Pontos:"/>
+			<p:inputText required="true" label="Pontos" value="#{partidaBean.pontos1}"/> 
+			
+			<p:outputLabel value="Equipe 2:"/>
+			<h:selectOneListbox size="5" value="#{partidaBean.equipe2}">
+			<f:selectItems  var="equipes2" value="#{equipeBean.lista}" itemLabel="#{equipes2.nomeEquipe}" 
+			itemValue="#{equipes2}"/>
+			</h:selectOneListbox>
+			
+			<p:outputLabel value="Pontos:"/>
+			<p:inputText required="true" label="Pontos" value="#{partidaBean.pontos2}" /> 	 		
+			
+			
+					
+        	<p:commandButton value="Salvar" action="#{partidaBean.resultado}" />
+        	</p:panelGrid>
+        	</h:form>
+        	
+        	</div>
+		</ui:define>
+    </ui:decorate>
+  	
+
+
+
+
+  </html>

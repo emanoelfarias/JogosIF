@@ -1,0 +1,52 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+	<ui:decorate template="/padrao.xhtml">
+	
+	
+   <ui:define name="centro">
+   <h:form> 
+   
+   <p:messages errorStyle="color: red" infoStyle="color: green"
+			warnStyle="color: orange" fatalStyle="color: gray" />
+      
+   <p:dataTable value="#{modalidadeBean.lista}"
+				var="lista" border="1" cellspacing="0" cellpadding="2"
+				paginator="true" rows="5" paginatorPosition="bottom" lazy="false">
+		
+		<p:column headerText="Codigo" sortBy="#{lista.codModalidade}"  >
+			<h:outputText value="#{lista.codModalidade}" />
+		</p:column>
+		
+		<p:column headerText="Descrição" sortBy="#{lista.tipo}">
+			<h:outputText value="#{lista.tipo}" />
+		</p:column>
+
+		
+		<p:column >
+			<p:commandButton icon="ui-icon-trash" title="Excluir" process="@this" update="@form" 
+			action="#{modalidadeBean.excluir}">
+			<f:setPropertyActionListener value="#{lista}" target="#{modalidadeBean.modalidadeSelecionada}" />
+			</p:commandButton>
+		
+			<p:button icon="ui-icon-plus" title="Cadastro" outcome="/cadastroModalidade" />	
+							
+		</p:column>
+
+		</p:dataTable>
+		</h:form>   
+		
+
+
+
+	</ui:define>
+    </ui:decorate>
+  	
+
+
+
+
+  </html>

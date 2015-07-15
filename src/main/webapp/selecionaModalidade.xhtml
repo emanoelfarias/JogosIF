@@ -1,0 +1,48 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+	
+	<ui:decorate template="/padrao.xhtml">
+    	<ui:define name="centro" >
+    		<div align="left">
+    		
+    		
+    		<p:outputLabel value="SELECIONE UMA MODALIDADE"/>
+    		
+    		<h:form id="form_cadastro_mod">
+    		
+    		<p:messages showDetail="false" autoUpdate="true" />        
+    		    		   		
+    		<p:panelGrid columns="2">     		
+        	
+   	   				<p:outputLabel value="Modalidade:"/>
+					<h:selectOneListbox size="5" value="#{rankView.modalidadeSelecionada}"    >
+					<f:selectItems  var="modalidades" value="#{modalidadeBean.lista}" itemLabel="#{modalidades.tipo}" 
+					itemValue="#{modalidades}"/>
+					
+					</h:selectOneListbox>
+			        	   	
+        		
+					<p:commandButton value="Enviar" action="#{rankView.prepara}" >
+					</p:commandButton>
+					
+					
+					
+					
+        	
+        	
+        	</p:panelGrid>
+        	</h:form>
+        	
+        	</div>
+		</ui:define>
+    </ui:decorate>
+  	
+
+
+
+
+  </html>

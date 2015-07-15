@@ -1,0 +1,47 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"      
+      xmlns:h="http://java.sun.com/jsf/html"> 
+
+<ui:decorate template="/padrao.xhtml">
+        <ui:define name="centro">
+           
+   <p:dataTable value="#{equipeBean.lista}"
+				var="lista" border="1" cellspacing="0" cellpadding="2"
+				paginator="true" rows="5" paginatorPosition="bottom" lazy="false">
+		
+		<p:column headerText="Codigo" sortBy="#{lista.codEquipe}">
+			<h:outputText value="#{lista.codEquipe}" />
+		</p:column>
+		
+		<p:column headerText="Nome" >
+			<h:outputText value="#{lista.nomeEquipe	}" />
+		</p:column>
+		
+		<p:column headerText="Pontos" sortBy="#{lista.pontuacao}">
+			<h:outputText value="#{lista.pontuacao}" />
+		</p:column>
+		
+		
+		
+		<p:column headerText="Grupo"   sortBy="#{lista.codGrupo.tipoGrupo}">
+			<h:outputText value="#{lista.codGrupo.tipoGrupo}" />
+		</p:column>
+		
+		<p:column >
+			<p:button icon="ui-icon-refresh" title="Editar" outcome="/cadastroEquipe" >
+			<f:param name="codEquipe" value="#{lista.codEquipe}" />				
+			</p:button>
+		
+		
+			<p:button icon="ui-icon-plus" title="Inserir" outcome="/cadastroEquipe">				
+			</p:button>
+		</p:column>
+
+		</p:dataTable>
+
+	</ui:define>
+    </ui:decorate>
+</html>

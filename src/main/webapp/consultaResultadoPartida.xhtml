@@ -1,0 +1,94 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+	
+	
+	
+
+	<ui:decorate template="/padrao.xhtml">
+	
+	
+		<f:metadata>
+			<f:viewParam name="id" value="#{partidaBean.id}"/>			
+		</f:metadata>
+	
+	
+        <ui:define name="centro">
+   PARTIDAS   
+   <p:dataTable value="#{partidaBean.lista}"
+				var="lista" border="1" cellspacing="0" cellpadding="2"
+				paginator="true" rows="5" paginatorPosition="bottom" lazy="false" >
+		
+		<p:column headerText="Código" >
+			<h:outputText value="#{lista.codPartida}" />
+		</p:column>
+		
+		<p:column headerText="Data Realização" >
+			<h:outputText value="#{lista.datapartida}" >
+			<f:convertDateTime pattern="dd/MM/yy" locale="pt" />
+			</h:outputText>
+		</p:column>
+		
+		<p:column headerText="Início" sortBy="#{lista.horaInicio}">
+			<h:outputText value="#{lista.horaInicio}" >
+			<f:convertDateTime pattern="hh:mm" locale="pt" />
+			</h:outputText>
+		</p:column>
+		
+		<p:column headerText="Fim" sortBy="#{lista.horaFim}">
+			<h:outputText value="#{lista.horaFim}" >
+			<f:convertDateTime pattern="hh:mm" locale="pt" />
+			</h:outputText>
+		</p:column>
+		
+		<p:column headerText="Arbitro" sortBy="#{lista.cpfArbitro}">
+			<h:outputText value="#{lista.cpfArbitro.nome}" />
+		</p:column>
+		
+		
+		<p:column headerText="Resultado">
+		<p:button icon="ui-icon-circle-triangle-s" title="Resultado" outcome="/consultaResultadoPartida">
+		<f:param name="id" value="#{lista.codPartida}" />
+		</p:button>	
+		</p:column>
+				
+		<p:column >
+			<p:button icon="ui-icon-plus" title="Inserir" outcome="/cadastroPartida">				
+			</p:button>
+		
+			<p:button icon="ui-icon-refresh" title="Editar" outcome="/editaPartida">	
+			<f:param name="codPartida" value="#{lista.codPartida}" />			
+			</p:button>
+		</p:column>
+
+		</p:dataTable>
+
+	RESULTADO DA PARTIDA <p:outputLabel value="#{partidaBean.id}" /> 
+   <p:dataTable value="#{partidaBean.listaPORID}"
+				var="lista" border="1" cellspacing="0" cellpadding="2"
+				paginator="true" rows="5" paginatorPosition="bottom" lazy="false" >
+		
+		
+		<p:column headerText="Equipe" >
+			<h:outputText value="#{lista.codEquipe.nomeEquipe}" />			
+		</p:column>
+		
+		<p:column headerText="Pontuação">
+			<h:outputText value="#{lista.resultadoEquipe}" />
+		</p:column>		
+	
+	</p:dataTable>
+
+
+
+	</ui:define>
+    </ui:decorate>
+  	
+
+
+
+
+  </html>

@@ -1,0 +1,42 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+	
+	
+	
+
+	<ui:decorate template="/padrao.xhtml">
+        <ui:define name="centro">
+           
+   <p:dataTable value="#{arbitroBean.lista}"
+				var="lista" border="1" cellspacing="0" cellpadding="2"
+				paginator="true" rows="5" paginatorPosition="bottom" lazy="false" onExpandStart="true" >
+		
+		<p:column headerText="Registro">
+			<h:outputText value="#{lista.cpfArbitro}" />
+		</p:column>
+		
+		<p:column headerText="Nome" sortBy="#{lista.nome}">
+			<h:outputText value="#{lista.nome}" />
+		</p:column>
+
+		
+		
+
+		</p:dataTable>
+
+		
+
+
+
+	</ui:define>
+    </ui:decorate>
+  	
+
+
+
+
+  </html>

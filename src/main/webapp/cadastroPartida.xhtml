@@ -1,0 +1,62 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+
+
+
+<ui:decorate template="/padrao.xhtml">
+
+
+
+    	<ui:define name="centro" >
+    		<div align="left">
+    		
+    		<f:metadata>
+			<f:viewParam name="codPartida" value="#{partidaBean.partida}" />			
+			</f:metadata>
+			
+    		
+    		<p:outputLabel value="CADASTRO PARTIDA"/>
+    		
+    		<h:form id="form_cadastro_partida">
+    		
+    		<p:messages showDetail="false" autoUpdate="true" />        
+    		    		   		
+    		<p:panelGrid columns="2">     		
+        	<p:outputLabel value="Data da partida"/>
+			<p:calendar  value="#{partidaBean.partida.datapartida}" showOn="button" locale="pt" />
+			
+			
+			<p:outputLabel value="Arbitro:"/>
+			<h:selectOneListbox size="5" value="#{partidaBean.arbitro}" required="true" label="Arbitro">
+			<f:selectItems  var="arbitros" value="#{arbitroBean.lista}" itemLabel="#{arbitros.nome}" itemValue="#{arbitros}"/>
+			</h:selectOneListbox>
+			
+			
+			
+			<p:outputLabel value="Hora do Início"/>
+			<p:calendar required="true" label="HoraInicio" pattern="HH:mm" locale="pt" value="#{partidaBean.partida.horaInicio}" /> 
+			   	   	
+        	<p:outputLabel value="Hora do Fim"/>
+			<p:calendar required="true" label="HoraFim" pattern="HH:mm" locale="pt"  value="#{partidaBean.partida.horaFim}" /> 
+			
+			
+			
+			
+					
+        	<p:commandButton value="Salvar" action="#{partidaBean.guardar}" />
+        	</p:panelGrid>
+        	</h:form>
+        	
+        	</div>
+		</ui:define>
+    </ui:decorate>
+  	
+
+
+
+
+  </html>

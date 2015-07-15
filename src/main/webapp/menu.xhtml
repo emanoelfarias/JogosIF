@@ -1,0 +1,47 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core">
+ 
+    
+    <ui:decorate template="/padrao.xhtml">
+        <ui:define name="menu">
+         <h:form>
+                            <p:menu style="width: 200px"  >
+                                <p:submenu label="Identificação: #{admBean.nome}">
+                                    <p:menuitem value="Início" icon="ui-icon-home" action="/ola"/>
+                                    <p:menuitem value="Sair" icon="ui-icon-power" action="#{admBean.logout}"/>                                    
+                                </p:submenu>
+                                    
+                                <p:submenu label="Gerenciar"> 
+                                    <p:menuitem value="Modalidades" icon="ui-icon-triangle-1-e" action="/consultaModalidades.xhtml"/> 
+                                      
+                                    <p:menuitem value="Partidas" icon="ui-icon-triangle-1-e" action="/consultaPartida"/>   
+                                    <p:menuitem value="Alunos" icon="ui-icon-triangle-1-e" action="/consultaAluno.xhtml"/>   
+                                    <p:menuitem value="Arbitros" icon="ui-icon-triangle-1-e" action="/consultaArbitro.xhtml"/>                               
+                             	</p:submenu>
+                             	
+                             	<p:submenu label="Equipe">
+                             	 <p:menuitem value="Equipes" icon="ui-icon-triangle-1-e" action="/consultaEquipe.xhtml"/>
+                             	<p:menuitem value="Modalidades" icon="ui-icon-triangle-1-e" action="/consultaEquipeModalidade.xhtml" />
+                             	<p:menuitem value="Grupos" icon="ui-icon-triangle-1-e" action="/consultaEquipeGrupo.xhtml" />
+                             	</p:submenu>
+                                
+                                 <p:submenu label="Outros">  
+                                    <p:menuitem value="Raking" icon="ui-icon-triangle-1-e"/>
+                               		<p:menuitem value="Contato" icon="ui-icon-info" action="emanoel100g@hotmail.com"/>                                    
+                             	</p:submenu>
+                               
+                                    
+                                         
+                                
+                                
+                            </p:menu>
+                        </h:form>
+                   
+
+        </ui:define>
+    </ui:decorate>
+
+    </html>

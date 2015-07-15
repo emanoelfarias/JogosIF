@@ -1,0 +1,38 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+	
+	<ui:decorate template="/padrao.xhtml">
+    	<ui:define name="centro" >
+    		<div align="left">
+    		
+    		
+    		<p:outputLabel value="CADASTRO MODALIDADES"/>
+    		
+    		<h:form id="form_cadastro_mod">
+    		
+    		<p:messages showDetail="false" autoUpdate="true" />        
+    		    		   		
+    		<p:panelGrid columns="2">     		
+        	<p:outputLabel value="Modalidade"/>
+			<p:inputText required="true" label="Tipo" validatorMessage="Insira um valor válido" requiredMessage="Valor necessário."
+			converterMessage="Erro ao converter" value="#{modalidadeBean.modalidade.tipo}"/> 
+			   	   	
+        			
+					
+        	<p:commandButton value="Salvar" action="#{modalidadeBean.guardar}" />
+        	</p:panelGrid>
+        	</h:form>
+        	
+        	</div>
+		</ui:define>
+    </ui:decorate>
+  	
+
+
+
+
+  </html>
